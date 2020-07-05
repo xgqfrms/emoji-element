@@ -1,3 +1,5 @@
+[![](https://img.shields.io/badge/webcomponents.org-emoji%20element-deepgreen.svg)](https://www.webcomponents.org/element/emoji-element)
+
 # emoji-element
 
 > Web Components &amp; Custom Elements 
@@ -30,3 +32,6 @@
 
 https://www.npmjs.com/package/emoji-element
 
+## custom element
+
+https://www.webcomponents.org/element/emoji-element
