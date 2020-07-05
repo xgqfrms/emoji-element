@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/webcomponents.org-emoji%20element-deepgreen.svg)](https://www.webcomponents.org/element/emoji-element)
+![](https://img.shields.io/badge/webcomponents.org-published-blue.svg) [![](https://img.shields.io/badge/webcomponents.org-emoji%20element-deepgreen.svg)](https://www.webcomponents.org/element/emoji-element)
 
 # emoji-element
 
