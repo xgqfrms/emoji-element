@@ -2,7 +2,7 @@
 
 # emoji-element
 
-> Web Components &amp; Custom Elements 
+> Web Components & Custom Elements 
 
 1. ufo-element / ufo-element-🛸
 2. ghost-element / ghost-element-👻

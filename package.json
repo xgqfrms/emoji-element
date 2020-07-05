@@ -1,0 +1,44 @@
+{
+  "name": "emoji-element",
+  "version": "1.0.1",
+  "description": "emoji-element Web Components & Custom Elements ",
+  "author": "xgqfrms",
+  "license": "MIT",
+  "private": false,
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "emoji-element",
+    "Web Components",
+    "Custom Elements",
+    "ufo-element",
+    "ghost-element",
+    "shit-element"
+  ],
+  "logo": {
+    "file": "./assets/logo.png"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "src/index.js",
+    "src/index.html",
+    "LICENSE",
+    "examples/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xgqfrms/emoji-element.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xgqfrms/emoji-element/issues"
+  },
+  "homepage": "https://github.com/xgqfrms/emoji-element#readme"
+}

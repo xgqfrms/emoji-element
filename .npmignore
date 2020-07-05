@@ -1,0 +1,11 @@
+*.DS_Store
+.git
+.svn
+.npmrc
+*.log
+npm-debug.log
+examples
+000-xyz
+test
+.vscode
+.github
