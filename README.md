@@ -25,3 +25,8 @@
 <shit-element-💩>💩</shit-element-💩>
 
 ```
+
+## npm
+
+https://www.npmjs.com/package/emoji-element
+
