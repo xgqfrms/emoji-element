@@ -39,9 +39,11 @@ examples
 
 ```sh
 # emoji-element
+
+$ npm whoami 
 $ npm publish
 
 ```
 
-
+https://docs.npmjs.com/files/package.json#files
 
