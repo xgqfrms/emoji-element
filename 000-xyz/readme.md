@@ -47,3 +47,7 @@ $ npm publish
 
 https://docs.npmjs.com/files/package.json#files
 
+
+## FUNDING.yml
+
+[FUNDING.yml](https://www.cnblogs.com/xgqfrms/p/13256079.html)
