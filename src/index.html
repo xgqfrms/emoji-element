@@ -7,6 +7,18 @@
   <meta name="author" content="xgqfrms">
   <meta name="generator" content="VS code">
   <title>emoji-element</title>
+  <!-- load webcomponents bundle, which includes all the necessary polyfills -->
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <!-- load the element -->
+  <script type="module" src="./index.js"></script>
+  <style>
+    emoji-element {
+      --emoji-element-width: 1600px;
+      --emoji-element-height: 800px;
+      width: var(--emoji-element-width);
+      height: var(--emoji-element-height);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -15,7 +27,14 @@
   <main>
     <article>
       <section>
-        <a href="https://feiqa.xgqfrms.xyz/index.html"></a>
+        <!-- use the element -->
+        <emoji-element></emoji-element>
+        <ufo-element>🛸</ufo-element>
+        <ghost-element>👻</ghost-element>
+        <shit-element>💩</shit-element>
+        <ufo-element-🛸>🛸</ufo-element-🛸>
+        <ghost-element-👻>👻</ghost-element-👻>
+        <shit-element-💩>💩</shit-element-💩>
       </section>
     </article>
   </main>

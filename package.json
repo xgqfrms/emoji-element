@@ -40,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/xgqfrms/emoji-element/issues"
   },
-  "homepage": "https://github.com/xgqfrms/emoji-element#readme"
+  "homepage": "https://github.com/xgqfrms/emoji-element#readme",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.4.3"
+  }
 }
