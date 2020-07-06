@@ -20,9 +20,6 @@ const log = console.log;
 
 log(`hello, emoji-element!`);
 
-// 相交
-const isIntersecting = ({isIntersecting}) => isIntersecting;
-
 const tagName = `emoji-element`;
 
 const template = document.createElement('template');
@@ -61,105 +58,49 @@ template.innerHTML = `
   <img id="image" aria-hidden="true"/>
 `;
 
-/* istanbul ignore next */
+// ???
 if (window.ShadyCSS) window.ShadyCSS.prepareTemplate(template, tagName);
 
 class EmojiElement extends HTMLElement {
-  /**
-   * Guards against loops when reflecting observed attributes.
-   * @param  {String} name Attribute name
-   * @param  {any} value
-   * @protected
-   */
-  safeSetAttribute(name, value) {
-    if (this.getAttribute(name) !== value) this.setAttribute(name, value);
-  }
-
-  static get observedAttributes() {
-    return ['src', 'alt'];
-  }
-
-  /**
-   * Image URI.
-   * @type {String}
-   */
-  set src(value) {
-    this.safeSetAttribute('src', value);
-    if (this.intersecting) this.loadImage();
-  }
-
-  get src() {
-    return this.getAttribute('src');
-  }
-
-  /**
-   * Image alt-text.
-   * @type {String}
-   */
-  set alt(value) {
-    this.safeSetAttribute('alt', value);
-    this.shadowImage.alt = value;
-  }
-
-  get alt() {
-    return this.getAttribute('alt');
-  }
-
-  /**
-   * Whether the element is on screen.
-   * @type {Boolean}
-   */
-  get intersecting() {
-    return this.hasAttribute('intersecting');
-  }
-
-  set intersecting(v) {}
-
   constructor() {
     super();
-    this.observerCallback = this.observerCallback.bind(this);
-    this.loadImage = this.loadImage.bind(this);
     this.onLoad = this.onLoad.bind(this);
     this.onError = this.onError.bind(this);
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.shadowImage = this.shadowRoot.getElementById('image');
-    this.shadowImage.onload = this.onLoad;
-    this.shadowImage.onerror = this.onError;
     this.shadowPlaceholder = this.shadowRoot.getElementById('placeholder');
   }
 
-  connectedCallback() {
-    this.setAttribute('role', 'presentation');
-    this.src = this.getAttribute('src');
-    this.alt = this.getAttribute('alt');
-    this.placeholder = this.getAttribute('placeholder');
-    this.updateShadyStyles();
-    if ('IntersectionObserver' in window) this.initIntersectionObserver();
-    else this.loadImage();
+  safeSetAttribute(name, value) {
+    if (this.getAttribute(name) !== value) {
+      this.setAttribute(name, value);
+    }
   }
 
-  attributeChangedCallback(name, oldVal, newVal) {
-    this[name] = newVal;
+  static get emojiAttributes() {
+    return ['text', 'alt'];
   }
 
-  disconnectedCallback() {
-    this.disconnectObserver();
+  set text(value) {
+    this.safeSetAttribute('text', value);
+    if (this.success) {
+      this.loadEmoji();
+    }
   }
 
-  /**
-   * Sets the intersecting attribute and reload styles if the polyfill is at play.
-   */
-  loadImage() {
-    this.setAttribute('intersecting', '');
-    this.shadowImage.src = this.src;
+  get text() {
+    return this.getAttribute('text');
+  }
+
+  loadEmoji() {
+    this.setAttribute('success', '');
+    this.shadowEmoji.text = this.text;
   }
 
   onLoad(event) {
     this.dispatchEvent(new CustomEvent('loadend', {detail: {success: true}}));
-    this.shadowImage.removeAttribute('aria-hidden');
+    this.shadowEmoji.removeAttribute('aria-hidden');
     this.shadowPlaceholder.setAttribute('aria-hidden', 'true');
-    this.disconnectObserver();
     this.updateShadyStyles();
   }
 
@@ -167,47 +108,28 @@ class EmojiElement extends HTMLElement {
     this.dispatchEvent(new CustomEvent('loadend', {detail: {success: false}}));
   }
 
-  /**
-   * When the polyfill is at play, ensure that styles are updated.
-   * @protected
-   */
   updateShadyStyles() {
-    /* istanbul ignore next */
     if(window.ShadyCSS) window.ShadyCSS.styleElement(this);
   }
 
-  /**
-   * Sets the `intersecting` property when the element is on screen.
-   * @param  {[IntersectionObserverEntry]} entries
-   * @protected
-   */
-  observerCallback(entries) {
-    if (entries.some(isIntersecting)) this.loadImage();
+  connectedCallback() {
+    this.connect();
+    this.setAttribute('role', 'presentation');
+    this.alt = this.getAttribute('alt');
+    this.placeholder = this.getAttribute('placeholder');
+    this.loadEmoji();
   }
 
-  /**
-   * Initializes the IntersectionObserver when the element instantiates.
-   * @protected
-   */
-  initIntersectionObserver() {
-    /* istanbul ignore if */
-    if (this.observer) return;
-    const rootMargin = '10px';
-    this.observer =
-      new IntersectionObserver(this.observerCallback, { rootMargin });
-    this.observer.observe(this);
+  connect() {
+    log(`connect`);
   }
 
+  disconnectedCallback() {
+    this.disconnect();
+  }
 
-  /**
-   * Disconnects and unloads the IntersectionObserver.
-   * @protected
-   */
-  disconnectObserver() {
-    if (!this.observer) return;
-    this.observer.disconnect();
-    this.observer = null;
-    delete this.observer;
+  disconnect() {
+    log(`disconnect`);
   }
 }
 

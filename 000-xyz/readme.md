@@ -51,3 +51,26 @@ https://docs.npmjs.com/files/package.json#files
 ## FUNDING.yml
 
 [FUNDING.yml](https://www.cnblogs.com/xgqfrms/p/13256079.html)
+
+## window.ShadyCSS)
+
+https://www.cnblogs.com/xgqfrms/p/13258493.html
+
+## jest
+
+```sh
+$ yarn add -D jest
+
+```
+
+```js
+  "scripts": {
+    "test": "echo \"🚀run jest testing...\" && jest",
+    "exit": "echo \"Error: no test specified\" && exit 1"
+  },
+
+```
+
+## example
+
+https://github.com/bennypowers/lazy-image

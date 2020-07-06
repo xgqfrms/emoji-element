@@ -28,6 +28,31 @@
 
 ```
 
+### 📦 Load it!
+
+```html
+<!-- CDN -->
+<script async type="module" src="https://unpkg.com/emoji-elements/src/index.js"></script>
+
+<!-- npm -->
+<script async type="module" src="/node_modules/emoji-elements/src/index.js"></script>
+
+<!-- ES Module -->
+<script type="module">
+  import '/node_modules/emoji-elements/src/index.js';
+  // ...
+</script>
+
+```
+### 💪 Use it!
+
+```html
+<emoji-element text="👻🛸💩" alt="Emoji Element">
+  <span slot="placeholder">👻🛸💩</span>
+</emoji-element>
+
+```
+
 ## live demo
 
 <!--
