@@ -47,6 +47,16 @@ $ npm publish
 
 https://docs.npmjs.com/files/package.json#files
 
+> package OK
+
+https://github.com/xgqfrms/emoji-element
+
+https://www.npmjs.com/package/emoji-element
+
+https://www.webcomponents.org/element/emoji-element
+
+https://unpkg.com/emoji-elements/src/index.js
+
 
 ## FUNDING.yml
 
@@ -74,3 +84,5 @@ $ yarn add -D jest
 ## example
 
 https://github.com/bennypowers/lazy-image
+
+
