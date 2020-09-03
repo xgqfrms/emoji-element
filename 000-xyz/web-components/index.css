@@ -1,0 +1,15 @@
+.run {
+  width: 100px;
+  height: 100px;
+  background: url("data:image/png;base64,") 0 0;
+  animation: run 500 step(6) infinite;
+}
+
+@keyframes run {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -600px 0;
+  }
+}

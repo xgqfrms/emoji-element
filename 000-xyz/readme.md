@@ -86,3 +86,32 @@ $ yarn add -D jest
 https://github.com/bennypowers/lazy-image
 
 
+
+## window.ShadyCSS
+
+
+
+## jest
+
+https://jestjs.io/docs/zh-Hans/getting-started.html
+
+```sh
+$ yarn add -D jest
+# OR
+$ npm i -D jest
+
+```
+
+> babel
+
+```sh
+$ yarn add -D babel-jest @babel/core @babel/preset-env
+
+
+$ yarn add -D babel-plugin-dynamic-import-node
+
+
+
+## babel
+
+
