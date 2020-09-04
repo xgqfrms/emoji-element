@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <title>emoji-element</title>
+  <style>
+    /* global css */
+    emoji-element {
+      /*
+      --emoji-element-width: 1600px;
+      --emoji-element-height: 800px;
+      */
+      --emoji-element-width: 400px;
+      --emoji-element-height: 300px;
+      width: var(--emoji-element-width);
+      height: var(--emoji-element-height);
+      --emoji-element-fade-duration: 0.5s;
+      --emoji-element-fade-easing: ease;
+      /* object-fit */
+      --emoji-element-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>emoji-element</h1>
+  </header>
+  <main>
+    <section>
+      <h2>define Custom Elements</h2>
+      <!-- use the element -->
+      <emoji-element
+        url="https://img2020.cnblogs.com/blog/740516/202009/740516-20200903210438342-951722542.png"
+        text="emoji-element text">
+        emoji-element
+      </emoji-element>
+    </section>
+    <template data-template="emoji-element">
+      <style>
+        :host {
+          display: block;
+          position: relative;
+        }
+        /*
+        */
+        #image,
+        #placeholder ::slotted(*) {
+          /*
+          position: absolute;
+          top: 0;
+          left: 0;
+          */
+          transition:
+            opacity
+            var(--emoji-element-fade-duration, 0.3s)
+            var(--emoji-element-fade-easing, ease);
+          object-fit: var(--emoji-element-fit, contain);
+          width: var(--emoji-element-width, 100%);
+          height: var(--emoji-element-height, 100%);
+        }
+        :host([fade]) #placeholder:not([aria-hidden="true"]) ::slotted(*),
+        :host([fade]) #image:not([aria-hidden="true"]) {
+          opacity: 1;
+        }
+        :host([fade]) #image,
+        :host([fade]) #placeholder[aria-hidden="true"] ::slotted(*) {
+          opacity: 0;
+        }
+      </style>
+      <div data-uid="div" id="placeholder" aria-hidden="false">
+        <slot name="placeholder">loading...</slot>
+      </div>
+      <img data-uid="img" id="image" aria-hidden="true"/>
+      <button data-uid="button">click</button>
+    </template>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2020</p>
+  </footer>
+  <!-- load web components bundle, which includes all the necessary polyfills -->
+  <!-- <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script> -->
+  <!-- load the element -->
+  <script src="./index.js"></script>
+</body>
+</html>
