@@ -5,13 +5,24 @@
   animation: running 500ms steps(6) infinite;
   -webkit-animation: running 500ms steps(6) infinite;
   /* steps !== step */
+  /* 500ms !== 500 */
 }
 
 @keyframes running {
   from {
-    background-position: 0 0;
+    background-position: 600px 0;
   }
   to {
     background-position: -600px 0;
   }
 }
+
+
+/* h1 {
+  color: #fff !important;
+  background: #000;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+} */

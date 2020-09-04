@@ -43,6 +43,7 @@ class TrumpComponent extends HTMLElement{
         min-height: 100px;
         width: 512px;
         height: 512px;
+        border: 1px solid red;
         background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
         background-repeat: no-repeat;
         object-fit: contain;
@@ -50,7 +51,7 @@ class TrumpComponent extends HTMLElement{
       }
       @keyframes run {
         from {
-          background-position: 0 0;
+          background-position: 600px 0;
         }
         to {
           background-position: -600px 0;
