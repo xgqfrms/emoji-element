@@ -42,8 +42,9 @@ class EmojiElement extends HTMLElement {
     // Shadow DOM add template
     this.shadowEmoji.appendChild(this.templateContent);
     // this.appendChild(his.templateContent);
-    // this.shadowRoot.appendChild(his.templateContent);
-    log(`this.shadowRoot`, this.shadowRoot);
+    // this.shadowRoot
+    // this.shadowRoot.appendChild(this.templateContent);
+    // log(`this.shadowRoot`, this.shadowRoot);
     // #shadow-root (open)
     // DOM
     this.shadowPlaceholder = this.shadowEmoji.querySelector(`[data-uid="div"]`);
@@ -52,6 +53,10 @@ class EmojiElement extends HTMLElement {
     // <div data-uid=​"div" id=​"placeholder" aria-hidden=​"false">​…​</div>​
     this.shadowImg = this.shadowEmoji.querySelector(`[data-uid="img"]`);
     log(`this.shadowImg`, this.shadowImg);
+    this.shadowImg.addEventListener('error', () => {
+      this.shadowPlaceholder.setAttribute(`style`, "display: block;");
+      this.shadowPlaceholder.setAttribute(`data-style`, "block;");
+    });
     this.shadowImg.addEventListener('load', () => {
       // do something
       const timer = setInterval(() => {
@@ -113,6 +118,7 @@ class EmojiElement extends HTMLElement {
   }
 
   onLoad(event) {
+    // CustomEvent
     this.dispatchEvent(new CustomEvent('loadend', {detail: {success: true}}));
     this.shadowEmoji.removeAttribute('aria-hidden');
     this.shadowPlaceholder.setAttribute('aria-hidden', 'true');
@@ -162,6 +168,6 @@ class EmojiElement extends HTMLElement {
 
 
 // 添加样式到 Shadow DOM （template）
-if (window.ShadyCSS) window.ShadyCSS.prepareTemplate(template, tagName);
+// if (window.ShadyCSS) window.ShadyCSS.prepareTemplate(template, tagName);
 
 customElements.define(tagName, EmojiElement);

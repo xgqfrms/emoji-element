@@ -55,7 +55,6 @@ template.innerHTML = `
     <slot name="placeholder"></slot>
   </div>
   <img id="image" aria-hidden="true"/>
-  <button>click</button>
 `;
 
 const tagName = `emoji-element`;
@@ -66,24 +65,17 @@ class EmojiElement extends HTMLElement {
     this.onLoad = this.onLoad.bind(this);
     this.onError = this.onError.bind(this);
     // show Shadow DOM
-    this.shadowEmoji = this.attachShadow({mode: 'open'});
+    this.attachShadow({mode: 'open'});
     // hidden Shadow DOM
     // this.attachShadow({mode: 'close'});
     const templateContent = template.content.cloneNode(true);
     log(`templateContent`, templateContent)
     this.template = templateContent;
     log(`this.template`, this.template)
-    this.shadowEmoji.appendChild(templateContent);
-    this.shadowPlaceholder = this.shadowEmoji.getElementById('placeholder');
+    this.shadowEmoji = this.shadowRoot.appendChild(templateContent);
     // this.appendChild(templateContent);
-    // this.shadowRoot.appendChild(templateContent);
-    // this.shadowEmoji = this.shadowRoot.appendChild(templateContent);
-    // this.shadowPlaceholder = this.shadowRoot.getElementById('placeholder');
-    this.$button = this.shadowEmoji.querySelector('button');
-    this.$button.addEventListener('click', () => {
-      // do something
-      log(`clicked button`)
-    });
+    this.shadowPlaceholder = this.shadowRoot.getElementById('placeholder');
+
   }
 
   safeSetAttribute(name, value) {
@@ -141,8 +133,6 @@ class EmojiElement extends HTMLElement {
   connect() {
     log(`connect`);
     const img = this.template.querySelector('img');
-    const url = this.getAttribute('url');
-    log(`url`, url)
     log(`this.template`, this.template.content)
     log(`img`, img)
     // img.setAttribute('src', this.getAttribute('url'));
