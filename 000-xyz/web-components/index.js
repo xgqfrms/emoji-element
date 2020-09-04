@@ -36,11 +36,13 @@ class TrumpComponent extends HTMLElement{
     const wrapper = document.createElement(`div`);
     wrapper.setAttribute(`class`, `run`);
     const style = document.createElement(`style`);
-    style.setContent = `
+    // style.setContent not exist
+    style.textContent = `
       .run {
         width: 100px;
         height: 100px;
-        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAAflBMVEUAAAC/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVK/aVLTn5Hy7/D1+PrQlofr3dupra8pLzM2PD/c3+FPPjuQV0iHU0ZhRT9bTlWnfYfZnKnyq7o2NzuzhJDCdmrso63Sgnnilprvp7R7RZaHAAAAEnRSTlMAMO9wAP+PEK9QQL8gYJ/fz4BJ06cKAAABKUlEQVR4AYXU5xaiMBBAYYheolQLKq679vr+L7gMvUTz/Ro4V89IODoDrppMR5z+pavA05ZoRk55c/0rojbTXyOfRvAlCqOYljGaJPRoQ+QxsFjqYRQylriDyMdAaXsEXj/SClbrdL0C2kn1Ir1UbFKxgc5UR/WRsU13WbbbyiRDuu1HoTSk6T7L9ilQDjL5bRRTRlnuD1AOEhE1EZi/ScyryAWMO4mkikKE6deJSKKcQhiek4jbxb8LikgHWCO9wB4F/KbcqRNROWQjB0SinRmVv+PoH4WJQ+OY3z6dL9fc5XzKL46UFg6d6na/Nu63uoFuxOPZRs8H5ghe748Un/eLDlncRjkRVrH9YUJoPxai8QEncfuh3vvkV9sHcRQW/y5ekFBQsdz4DxcaKmRmgLDRAAAAAElFTkSuQmCC') 0 0;
+        background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
+        background-repeat: no-repeat;
         animation: run 500 step(6) infinite;
       }
       @keyframes run {
@@ -52,8 +54,44 @@ class TrumpComponent extends HTMLElement{
         }
       }
     `;
+    // style.cssText = `
+    //   .run {
+    //     width: 100px;
+    //     height: 100px;
+    //     background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
+    //     background-repeat: no-repeat;
+    //     animation: run 500 step(6) infinite;
+    //   }
+    //   @keyframes run {
+    //     from {
+    //       background-position: 0 0;
+    //     }
+    //     to {
+    //       background-position: -600px 0;
+    //     }
+    //   }
+    // `;
+    // style.innerHTML = `
+    //   .run {
+    //     width: 100px;
+    //     height: 100px;
+    //     background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
+    //     background-repeat: no-repeat;
+    //     animation: run 500 step(6) infinite;
+    //   }
+    //   @keyframes run {
+    //     from {
+    //       background-position: 0 0;
+    //     }
+    //     to {
+    //       background-position: -600px 0;
+    //     }
+    //   }
+    // `;
     shadow.appendChild(style);
     shadow.appendChild(wrapper);
+    // 添加样式到 Shadow DOM （template）
+    // if (window.ShadyCSS) window.ShadyCSS.prepareTemplate(template, tagName);
   }
 }
 
@@ -65,4 +103,17 @@ customElements.define(`trump-component`, TrumpComponent);
 // export {
 //   TrumpComponent,
 // };
+
+
+
+/*
+
+bug
+
+https://codepen.io/xgqfrms/pen/ZEWXrVz?editors=1111
+
+
+
+*/
+
 
