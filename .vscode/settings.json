@@ -16,7 +16,6 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true
   },
-  // "eslint.autoFixOnSave": true,
   "editor.formatOnSave": false,
   "editor.renderWhitespace": "all",
   "editor.fontSize": 16,
@@ -28,6 +27,10 @@
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
   "[typescript]": {
     "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[css]": {
+    "editor.formatOnSave": false,
     "editor.formatOnPaste": true
   },
   "[markdown]": {
@@ -61,6 +64,7 @@
   // HTML & overwrite User settings.json
   "html.format.extraLiners": "",
   "html.format.enable": false,
+  // "css.format.enable": false,
   "html.format.contentUnformatted": "body, div, section, script, pre,code,textarea",
   "workbench.colorCustomizations": {
     "activityBar.background": "#1accff",

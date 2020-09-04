@@ -2,11 +2,12 @@
   width: 100px;
   height: 100px;
   background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
-  /* background: url("data:image/png;base64,") 0 0; */
-  animation: run 500 step(6) infinite;
+  animation: running 500ms steps(6) infinite;
+  -webkit-animation: running 500ms steps(6) infinite;
+  /* steps !== step */
 }
 
-@keyframes run {
+@keyframes running {
   from {
     background-position: 0 0;
   }

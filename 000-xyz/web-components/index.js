@@ -39,11 +39,14 @@ class TrumpComponent extends HTMLElement{
     // style.setContent not exist
     style.textContent = `
       .run {
-        width: 100px;
-        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        width: 512px;
+        height: 512px;
         background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
         background-repeat: no-repeat;
-        animation: run 500 step(6) infinite;
+        object-fit: contain;
+        animation: run 500ms steps(6) infinite;
       }
       @keyframes run {
         from {
@@ -60,7 +63,7 @@ class TrumpComponent extends HTMLElement{
     //     height: 100px;
     //     background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
     //     background-repeat: no-repeat;
-    //     animation: run 500 step(6) infinite;
+    //     animation: run 500ms steps(6) infinite;
     //   }
     //   @keyframes run {
     //     from {
@@ -77,7 +80,7 @@ class TrumpComponent extends HTMLElement{
     //     height: 100px;
     //     background: url(https://www.boston.com/wp-content/uploads/2016/05/yuge_anger.png) 0 0;
     //     background-repeat: no-repeat;
-    //     animation: run 500 step(6) infinite;
+    //     animation: run 500ms steps(6) infinite;
     //   }
     //   @keyframes run {
     //     from {
