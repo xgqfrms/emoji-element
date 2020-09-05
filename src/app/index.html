@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <title>emoji-element</title>
+  <!-- load webcomponents bundle, which includes all the necessary polyfills -->
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <!-- load the element -->
+  <script src="./index.js"></script>
+  <!-- <script type="module" src="./index.js"></script> -->
+  <style>
+    /* global css */
+    emoji-element {
+      /*
+      --emoji-element-width: 1600px;
+      --emoji-element-height: 800px;
+      */
+      --emoji-element-width: 400px;
+      --emoji-element-height: 300px;
+      width: var(--emoji-element-width);
+      height: var(--emoji-element-height);
+      --emoji-element-fade-duration: 0.5s;
+      --emoji-element-fade-easing: ease;
+      /* object-fit */
+      --emoji-element-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>emoji-element</h1>
+  </header>
+  <main>
+    <article>
+      <section>
+        <h2>define Custom Elements</h2>
+        <!-- use the element -->
+        <emoji-element
+          url="https://img2020.cnblogs.com/blog/740516/202009/740516-20200903210438342-951722542.png"
+          img="https://img2020.cnblogs.com/blog/740516/202009/740516-20200903210438342-951722542.png"
+          text="emoji-element text">
+          emoji-element
+        </emoji-element>
+      </section>
+      <section>
+        <h2>not define Custom Elements</h2>
+        <ufo-element>🛸</ufo-element>
+        <ghost-element>👻</ghost-element>
+        <shit-element>💩</shit-element>
+        <ufo-element-🛸>🛸</ufo-element-🛸>
+        <ghost-element-👻>👻</ghost-element-👻>
+        <shit-element-💩>💩</shit-element-💩>
+      </section>
+    </article>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2020</p>
+  </footer>
+</body>
+</html>
