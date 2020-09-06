@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="xgqfrms">
   <meta name="generator" content="VS code">
-  <title>emoji-element</title>
+  <title>emoji-element & html template</title>
   <style>
     /* global css */
     emoji-element {
@@ -24,10 +24,11 @@
       --emoji-element-fit: cover;
     }
   </style>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
 </head>
 <body>
   <header>
-    <h1>emoji-element</h1>
+    <h1>emoji-element & html template</h1>
   </header>
   <main>
     <section>
@@ -41,12 +42,11 @@
     </section>
     <template data-template="emoji-element">
       <style>
+        /* css for Shadow DOM */
         :host {
           display: block;
           position: relative;
         }
-        /*
-        */
         #image,
         #placeholder ::slotted(*) {
           /*
