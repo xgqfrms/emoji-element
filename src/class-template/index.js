@@ -20,7 +20,7 @@ const log = console.log;
 
 // log(`hello, emoji-element!`);
 
-// html template
+// class inner template
 
 const tagName = `emoji-element`;
 
@@ -35,6 +35,46 @@ class EmojiElement extends HTMLElement {
     // show Shadow DOM
     this.shadowEmoji = this.attachShadow({mode: 'open'});
     // template
+    const template = document.createElement(`template`);
+    // data-template="emoji-element"
+    const str = `
+      <style>
+        :host {
+          display: block;
+          position: relative;
+        }
+        /*
+        */
+        #image,
+        #placeholder ::slotted(*) {
+          /*
+          position: absolute;
+          top: 0;
+          left: 0;
+          */
+          transition:
+            opacity
+            var(--emoji-element-fade-duration, 0.3s)
+            var(--emoji-element-fade-easing, ease);
+          object-fit: var(--emoji-element-fit, contain);
+          width: var(--emoji-element-width, 100%);
+          height: var(--emoji-element-height, 100%);
+        }
+        :host([fade]) #placeholder:not([aria-hidden="true"]) ::slotted(*),
+        :host([fade]) #image:not([aria-hidden="true"]) {
+          opacity: 1;
+        }
+        :host([fade]) #image,
+        :host([fade]) #placeholder[aria-hidden="true"] ::slotted(*) {
+          opacity: 0;
+        }
+      </style>
+      <div data-uid="div" id="placeholder" aria-hidden="false">
+        <slot name="placeholder">loading...</slot>
+      </div>
+      <img data-uid="img" id="image" aria-hidden="true"/>
+      <button data-uid="button">click</button>
+    `;
     const template = document.querySelector(`[data-template="emoji-element"]`);
     this.templateContent = template.content.cloneNode(true);
     log(`this.templateContent`, this.templateContent);
