@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <title>HTML5 播放 mp4 格式视频</title>
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <header>
+    <h1></h1>
+  </header>
+  <main>
+    <video id="videojs-flvjs-player" class="video-js vjs-default-skin vjs-big-play-centered"  width="1024" height="768"> </video>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2020</p>
+  </footer>
+  <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
+  <script src="https://unpkg.com/flv.js/dist/flv.min.js"></script>
+  <script src="https://unpkg.com/videojs-flvjs/dist/videojs-flvjs.min.js"></script>
+  <!-- js -->
+  <script>
+    const log = console.log;
+  </script>
+  <script>
+    // 直播源
+    var flvUrl = "http://wm.video.huajiao.com/vod-wm-huajiao-bj/223723225_4-1570554616-5b1fb084-8e3f-8567.mp4";
+    var player = videojs('videojs-flvjs-player', {
+        techOrder: ['html5', 'flvjs'],
+        flvjs: {
+            mediaDataSource: {
+                isLive: false,
+                cors: true,
+                withCredentials: false,
+            },
+        },
+        sources: [{
+            src: flvUrl,
+            type: 'video/mp4'
+        }],
+        controls: true,
+        preload: "none"
+    }, function onPlayerReady() {
+        console.log('player ready');
+        player.on('error', (err) => {
+            console.log('first source load fail');
+            player.src({
+                src: flvUrl,
+                type: 'video/x-flv'
+            });
+        player.ready(function() {
+            console.log('player ready');
+            player.load();
+            player.play();
+        });
+    })
+    });
+  </script>
+</body>
+</html>

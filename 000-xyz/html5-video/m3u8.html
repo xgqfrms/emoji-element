@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xgqfrms">
+  <meta name="generator" content="VS code">
+  <title>HTML5 播放 m3u8 格式视频</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="./index.css">
+  <title></title>
+  <!--https://www.bootcdn.cn/video.js/-->
+  <link href="https://cdn.bootcss.com/video.js/7.6.5/alt/video-js-cdn.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1></h1>
+  </header>
+  <main>
+    <video id="myVideo" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="1080" height="708" data-setup='{}'>
+      <!--<source id="source" src="http://proxy.hls.yy.com/livesystem/15013_xv_64316154_64316154_0_0_0-15013_xa_64316154_64316154_0_0_0.m3u8?org=yyweb&uuid=f1223c4895364d9d8ec5f39361e2e1bf&t=1571968929&tk=54e0046f5498d3f250eb47e7d2a126f3"  type="application/x-mpegURL">-->
+      <source id="source" src="http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8"  type="application/x-mpegURL">
+    </video>
+  </main>
+  <footer>
+    <p>copyright&copy; xgqfrms 2020</p>
+  </footer>
+  <script src="https://cdn.bootcss.com/video.js/6.6.2/video.js"></script>
+  <!--https://www.bootcdn.cn/videojs-contrib-hls/-->
+  <script src="https://cdn.bootcss.com/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+  <!-- js -->
+  <script>
+    const log = console.log;
+  </script>
+  <script>
+    // videojs 简单使用
+    var myVideo = videojs('myVideo',{
+        bigPlayButton : true,
+        textTrackDisplay : false,
+        posterImage: false,
+        errorDisplay : false,
+    });
+    myVideo.play(); // 视频播放
+    myVideo.pause(); // 视频暂停
+  </script>
+</body>
+</html>
