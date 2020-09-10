@@ -37,14 +37,12 @@ class EmojiElement extends HTMLElement {
     // template
     const template = document.createElement(`template`);
     // data-template="emoji-element"
-    const str = `
+    const html = `
       <style>
         :host {
           display: block;
           position: relative;
         }
-        /*
-        */
         #image,
         #placeholder ::slotted(*) {
           /*
@@ -75,7 +73,7 @@ class EmojiElement extends HTMLElement {
       <img data-uid="img" id="image" aria-hidden="true"/>
       <button data-uid="button">click</button>
     `;
-    const template = document.querySelector(`[data-template="emoji-element"]`);
+    template.innerHTML = html;
     this.templateContent = template.content.cloneNode(true);
     log(`this.templateContent`, this.templateContent);
     // #document-fragment
