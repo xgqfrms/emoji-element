@@ -68,6 +68,7 @@ class EmojiElement extends HTMLElement {
       <img id="image" aria-hidden="true"/>
       <button>click</button>
     `;
+    this.template = template;
     this.templateContent = template.content.cloneNode(true);
     log(`this.templateContent`, this.templateContent)
     this.shadowEmoji.appendChild(this.templateContent);
@@ -144,6 +145,8 @@ class EmojiElement extends HTMLElement {
 
   connect() {
     log(`connect`);
+
+    log(`❌ this.template =`, this.template);
     const img = this.template.querySelector('img');
     const url = this.getAttribute('url');
     log(`url`, url)
