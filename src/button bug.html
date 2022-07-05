@@ -1,0 +1,136 @@
+<!-- demos -->
+<wcui-button type="primary">
+  <span slot="btnText">
+    按钮
+  </span>
+</wcui-button>
+
+<wcui-button></wcui-button>
+<wcui-button type="warning"></wcui-button>
+<wcui-button type="danger"></wcui-button>
+
+<!-- 模版 -->
+<template id="wcui-button-template">
+  <style>
+    .wcui-button {
+      display: inline-block;
+      padding: 4px 20px;
+      font-size: 14px;
+      line-height: 1.5715;
+      font-weight: 400;
+      border: 1px solid #1890ff;
+      border-radius: 2px;
+      background-color: #1890ff;
+      color: #fff;
+      box-shadow: 0 2px #00000004;
+    }
+    .wcui-button-warning {
+      border: 1px solid #faad14;
+      background-color: #faad14;
+    }
+    .wcui-button-danger {
+      border: 1px solid #ff4d4f;
+      background-color: #ff4d4f;
+    }
+  </style>
+  <div id="wcui-button">
+    <slot name="btnText">默认按钮</slot>
+  </div>
+</template>
+
+<script>
+  // 1. 获取 DOM 模版
+  // const template = document.getElementById("wcui-button-template");
+  const template = document.querySelector(`#wcui-button-template`);
+  console.log('\ntemplate =', template);
+  // 2. 继承 HTMLElement 类
+  class wcuiButton extends HTMLElement {
+    constructor() {
+      super();
+      // type 属性
+      this.types = {
+        primary: 'wcui-button',
+        warning: 'wcui-button-warning',
+        danger: 'wcui-button-danger',
+      };
+      this.defaultType = 'wcui-button';
+      // 开启 Shadow DOM
+      const shadow = this.attachShadow({
+        mode: 'open',
+      });
+      // 克隆一份, 防止重复使用造成污染
+      const content = template.content.cloneNode(true);
+      console.log('\content =', content);
+      // 把响应式数据挂到this
+      const type = this;
+      console.log('\ntype =', type);
+      console.log('this.types[type] =', this.types[type]);
+      // 获取 template DOM
+      this.btn = content.querySelector('#wcui-button');
+      console.log('this.btn =', this.btn);
+      if(this.types[type]) {
+        // this.btn.classList.add(this.types[type]);
+        this.btn.className += this.types[type];
+      } else {
+        // this.btn.classList.add(this.defaultType);
+        this.btn.classList.add('bug-style');
+      }
+      console.log('this.btn.className =', this.btn.className);
+      shadow.appendChild(content);
+    }
+    // observedAttributes
+    /*
+    static get observedAttributes() {
+      return ['type']
+    }
+    */
+    // 生命周期方法
+
+    // connectedCallback
+    // 当 custom element 首次被插入文档DOM时，被调用。
+
+    // disconnectedCallback
+    // 当 custom element 从文档DOM中删除时，被调用。
+
+    // adoptedCallback
+    // 当 custom element 被移动到新的文档时，被调用。
+
+    // attributeChangedCallback
+    // 当 custom element 增加、删除、修改`自身属性`时，被调用。
+    attributeChangedCallback(name, oldValue, newValue) {
+      console.log('👻 prop =', name);
+      console.log('oldValue, newValue =', oldValue, newValue);
+      this[name] = newValue;
+      // update style
+      this.render();
+      // this.reRender();
+    }
+    /*
+    attributeChangedCallback(prop, oldValue, newValue) {
+      console.log('👻 prop =', prop);
+      console.log('oldValue, newValue =', oldValue, newValue);
+      this[prop] = newValue;
+      // update style
+      this.render();
+      // this.reRender();
+    }
+    */
+
+    // 渲染
+    render() {
+      console.log('this.type =', this.type);
+      this.btn.className = `wcui-button ${this.types[this.type]}`
+    }
+    reRender() {
+      console.log('this.type =', this.type);
+      this.btn.className = `wcui-button ${this.types[this.type]}`
+    }
+  }
+  // ✅  注册自定义组件（Autonomous custom elements / 自主自定义元素）
+  window.customElements.define('wcui-button', wcuiButton)
+  // document.createElement("wcui-button")
+
+  // ✅ 注册自定义组件（Customized built-in elements / 定制的内置元素）
+  // window.customElements.define('wcui-button', wcuiButton, { extends: 'div' })
+  // document.createElement("div", { is: "wcui-button" })
+</script>
