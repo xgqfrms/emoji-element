@@ -51,10 +51,11 @@
     const log = console.log;
     // iframe CORS limit ⚠️
     const importNode = () => {
-      // const frame = document.getElementsByTagName("iframe")[0];
-      // const h1 = frame.contentWindow.document.getElementsByTagName("h1")[0];
-      const frame = document.querySelector('#iframe');
-      const h1 = frame.contentWindow.document.querySelector("h1");
+      // const iframe = document.getElementsByTagName("iframe")[0];
+      // const h1 = iframe.contentWindow.document.getElementsByTagName("h1")[0];
+      const iframe = document.querySelector('#iframe');
+      // const h1 = iframe.contentWindow.document.querySelector("h1");
+      const h1 = iframe.contentDocument.querySelector("h1");
       // 从 iframe 文档中提取出 DOM tree
       // ✅ deep = false 不包含 text
       // const dom = document.importNode(h1);

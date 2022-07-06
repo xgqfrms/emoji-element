@@ -54,7 +54,8 @@
       // const frame = document.getElementsByTagName("iframe")[0];
       // const h1 = frame.contentWindow.document.getElementsByTagName("h1")[0];
       const frame = document.querySelector('#iframe');
-      const h1 = frame.contentWindow.document.querySelector("h1");
+      // const h1 = frame.contentWindow.document.querySelector("h1");
+      const h1 = iframe.contentDocument.querySelector("h1");
       // ✅ deep = false 不包含 text
       // const dom = document.adoptNode(h1);
       // const dom = document.adoptNode(h1, false);
