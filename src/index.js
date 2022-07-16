@@ -18,12 +18,13 @@
 
 const log = console.log;
 
-log(`hello, emoji-element!`);
+// log(`hello, emoji-element!`);
 class EmojiElement extends HTMLElement {
   constructor() {
     super();
     this.onLoad = this.onLoad.bind(this);
     this.onError = this.onError.bind(this);
+    log('1. constructor 实例化的时候先执行！')
     log(`this.shadowRoot`, this.shadowRoot);
     log(`this.shadow`, this.shadow);
     // show Shadow DOM
@@ -170,6 +171,7 @@ if(!EmojiElement.tagName) {
   // ES6: static property 🚀
   EmojiElement.tagName = `emoji-element`;
 }
+console.log('✅ EmojiElement.tagName =', EmojiElement.tagName)
 
 
 // 添加样式到 Shadow DOM （template）
@@ -177,4 +179,5 @@ if(!EmojiElement.tagName) {
 //   window.ShadyCSS.prepareTemplate(template, EmojiElement.tagName);
 // }
 
+// 挂在 自定义组件(标签)
 customElements.define(EmojiElement.tagName, EmojiElement);
